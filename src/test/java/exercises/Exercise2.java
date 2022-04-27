@@ -36,4 +36,32 @@ public class Exercise2 {
 
         youngPeople.forEach(System.out::println);
     }
+
+    @Test
+    public void rangeIteratingLists() throws Exception {
+        List<Person> people = MockData.getPeople();
+
+        IntStream.range(0, people.size())
+                .forEach(index -> {Person person = people.get(index);
+                    System.out.println(person);
+        });
+    }
+
+    @Test
+    public void intStreamIterate() throws Exception {
+        System.out.println("STREAM");
+        System.out.println("EVEN OPERATION");
+
+        IntStream.iterate(1,operand -> operand + 1)
+                        .filter(number -> number % 2==0)
+                .limit(40)
+                .forEach(System.out::println);
+
+        System.out.println("STREAM");
+        System.out.println("ODD OPERATION");
+        IntStream.iterate(1, i -> i+1)
+                .filter(value -> value % 2==1)
+                .limit(40)
+                .forEach(System.out::println);
+    }
 }
